@@ -47,13 +47,12 @@ async function scrapeCards() {
             name: cardData.name,
             description: cardData.description,
             type: cardData.type,
-            trainerType: cardData.trainerType,
             series: cardData.series,
             rarity: {
                 id: cardData.rarity,
                 name: cardData.rarityName
             },
-            imgUrl: cardData.displayImageUrl,
+            imgSrc: cardData.displayImageUrl,
             expansion: {
                 id: cardData.expansionKey,
                 name: cardData.expansionName
@@ -65,7 +64,8 @@ async function scrapeCards() {
             variants: cardData.variants?.map(v => v.externalId),
             foundInPacks: [...new Set(cardData.foundInPacks)],
             hp: cardData.hp,
-            abilities: cardData.abilities
+            abilities: cardData.abilities,
+            owned: false
         };
 
         console.log("Downloaded ", transformedCard.name)
