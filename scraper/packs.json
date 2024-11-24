@@ -1,0 +1,27 @@
+[
+  {
+    "id": "AN001_0010_00_000",
+    "name": "Genetic Apex: Mewtwo",
+    "totalCards": 125
+  },
+  {
+    "id": "AN001_0020_00_000",
+    "name": "Genetic Apex: Charizard",
+    "totalCards": 126
+  },
+  {
+    "id": "AN001_0030_00_000",
+    "name": "Genetic Apex: Pikachu",
+    "totalCards": 126
+  },
+  {
+    "id": "AP001_0010_00_000",
+    "name": "Promo Pack A Series Vol. 1",
+    "totalCards": 5
+  },
+  {
+    "id": "AP001_0020_00_000",
+    "name": "Promo Pack A Series Vol. 2",
+    "totalCards": 5
+  }
+]
