@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Card } from "../model/Card";
 import "./CardComponent.css";
 
+type EmptyFunction = () => void;
+
 const CardComponent = ({ card, callback }: CardComponentProps) => {
 
     const calculateBrightness = () => card.owned ? "owned" : ""
@@ -10,15 +12,12 @@ const CardComponent = ({ card, callback }: CardComponentProps) => {
     const [brightness, setBrightness] = useState(calculateBrightness());
 
     return (
-        <>
-            <img alt={card.name} className={brightness} onClick={() => toggle()} src={card.imgSrc} />
-            <p>{card.id}</p>
-        </>
+        <img alt={card.name} className={brightness} loading="lazy" onClick={() => toggle()} src={card.imgSrc} />
     );
 }
 
 export interface CardComponentProps {
     card: Card,
-    callback: Function
+    callback: EmptyFunction
 }
 export default CardComponent;
