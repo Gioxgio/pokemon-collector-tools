@@ -3,6 +3,7 @@ import { Card } from './model/Card'
 import CardComponent from './components/CardComponent'
 import { useState } from 'react'
 import { getFromLocalStorage, Stores } from './services/localStorage';
+import PackHintComponent from './components/PackHintComponent';
 
 function App() {
 
@@ -16,13 +17,16 @@ function App() {
   const [cards, setCards] = useState(localStore.cards.sort(sorter));
 
   return (
-    <Grid container spacing={0.5} columns={12}>
-      {cards.map((card) => (
-        <Grid key={card.id} size={2}>
-          <CardComponent card={card} callback={handleChange}></CardComponent>
-        </Grid>
-      ))}
-    </Grid>
+    <>
+      <PackHintComponent cards={cards} packs={localStore.packs}></PackHintComponent>
+      <Grid container spacing={0.5} columns={12}>
+        {cards.map((card) => (
+          <Grid key={card.id} size={2}>
+            <CardComponent card={card} callback={handleChange}></CardComponent>
+          </Grid>
+        ))}
+      </Grid>
+    </>
   )
 }
 
