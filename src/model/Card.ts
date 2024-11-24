@@ -1,5 +1,5 @@
 export interface Card {
-    id: number;
+    id: string;
     name: string;
     description: string,
     type: "Fossil" | "Item" | "Pokemon" | "Supporter",

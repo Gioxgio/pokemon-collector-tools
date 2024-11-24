@@ -1,5 +1,5 @@
 export interface Pack {
-    id: number;
+    id: string;
     name: string;
     totalCards: number
 }
