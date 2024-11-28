@@ -1,8 +1,8 @@
-img {
+.img {
     pointer-events: all;
     width: 100%;
 }
 
-.owned{
+.owned {
     filter: brightness(50%);
 }
