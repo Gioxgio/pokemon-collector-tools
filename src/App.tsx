@@ -3,7 +3,7 @@ import { Card as CardModel } from './model/Card'
 import Card from './components/Card'
 import { useState } from 'react'
 import { getFromLocalStorage, Stores } from './services/localStorage';
-import PackHintComponent from './components/PackHintComponent';
+import PackSummary from './components/PackSummary';
 
 function App() {
 
@@ -15,11 +15,19 @@ function App() {
 
   const localStore = getFromLocalStorage();
   const [cards, setCards] = useState(localStore.cards.sort(sorter));
+  const packs = localStore.packs;
 
   return (
     <>
-      <PackHintComponent cards={cards} packs={localStore.packs}></PackHintComponent>
-      <Grid container spacing={0.5} columns={12}>
+      <Grid container columns={12} spacing={0.5} style={{ marginBottom: '30px' }}>
+        {packs.map((pack) => (
+          <Grid key={pack.id} size={4}>
+            <PackSummary cards={cards} pack={pack}></PackSummary>
+          </Grid>
+        ))}
+      </Grid>
+      <p />
+      <Grid container columns={12} spacing={0.5} >
         {cards.map((card) => (
           <Grid key={card.id} size={2}>
             <Card card={card} callback={handleChange}></Card>

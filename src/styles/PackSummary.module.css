@@ -1,0 +1,23 @@
+.container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.img {
+    pointer-events: all;
+    width: 100%;
+}
+
+.linearProgress {
+    border-radius: 5px;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.percentage {
+    color: black;
+    position: absolute;
+}
