@@ -10,31 +10,31 @@ async function scrapeCards() {
     const packsUberJson = [
         {
             id: "AN001_0010_00_000",
-            logo: "src/assets/mewtwo.png",
+            logo: "/public/assets/mewtwo.png",
             name: "Genetic Apex: Mewtwo",
             totalCards: 0
         },
         {
             id: "AN001_0020_00_000",
-            logo: "src/assets/charizard.png",
+            logo: "/public/assets/charizard.png",
             name: "Genetic Apex: Charizard",
             totalCards: 0
         },
         {
             id: "AN001_0030_00_000",
-            logo: "src/assets/pikachu.png",
+            logo: "/public/assets/pikachu.png",
             name: "Genetic Apex: Pikachu",
             totalCards: 0
         },
         {
             id: "AP001_0010_00_000",
-            logo: "src/assets/promo-a-1.png",
+            logo: "/public/assets/promo-a-1.png",
             name: "Promo Pack A Series Vol. 1",
             totalCards: 0
         },
         {
             id: "AP001_0020_00_000",
-            logo: "src/assets/promo-a.png",
+            logo: "/public/assets/promo-a.png",
             name: "Promo Pack A Series Vol. 2",
             totalCards: 0
         }
