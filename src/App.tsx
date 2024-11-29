@@ -19,9 +19,9 @@ function App() {
 
   return (
     <>
-      <Grid container columns={12} spacing={0.5} >
+      <Grid container columns={12} spacing={0.5} display="flex" justifyContent="center" alignItems="center" >
         {packs.map((pack) => (
-          <Grid display="flex" justifyContent="center" alignItems="center" key={pack.id} size="grow">
+          <Grid key={pack.id} size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
             <PackSummary cards={cards} pack={pack}></PackSummary>
           </Grid>
         ))}
@@ -29,7 +29,7 @@ function App() {
       <p />
       <Grid container columns={12} spacing={0.5} >
         {cards.map((card) => (
-          <Grid key={card.id} size={2}>
+          <Grid key={card.id} size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
             <Card card={card} callback={handleChange}></Card>
           </Grid>
         ))}
