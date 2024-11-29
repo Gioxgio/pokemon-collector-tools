@@ -14,22 +14,14 @@ const PackSummary = ({ cards, pack }: PackSummary) => {
     const percentage = Math.round(owned / pack.totalCards * 100);
 
     return (
-        <>
-            <img className={styles.img} src={pack.logo}></img>
+        <div className={styles.container}>
+            <img className={styles.img} alt={pack.name} src={pack.logo}></img>
             <div className={styles.container}>
                 <LinearProgress className={styles.linearProgress} style={{ height: '20px' }} variant="determinate" value={percentage} />
                 <p className={styles.percentage}>{`${percentage}%`}</p>
             </div>
-        </>
+        </div>
     );
-    // return (
-    //     <>
-    //         <p>{`Unique cards owned: ${cards.filter(card => card.owned).length}/${cards.length}`}</p>
-    //         {packs.map(p =>
-    //             <p>{`${p.name}: ${ownedByPack[p.id] || 0}/${p.totalCards} (${ownedByPack[p.id] / p.totalCards * 100 || 0})`}</p>
-    //         )}
-    //     </>
-    // );
 }
 
 export interface PackSummary {

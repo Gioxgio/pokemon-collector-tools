@@ -10,31 +10,31 @@ async function scrapeCards() {
     const packsUberJson = [
         {
             id: "AN001_0010_00_000",
-            logo: "/public/assets/mewtwo.png",
+            logo: "https://static.mana.wiki/tcgwiki-pokemonpocket/mewtwo-logo.png",
             name: "Genetic Apex: Mewtwo",
             totalCards: 0
         },
         {
             id: "AN001_0020_00_000",
-            logo: "/public/assets/charizard.png",
+            logo: "https://static.mana.wiki/tcgwiki-pokemonpocket/charizard-logo.png",
             name: "Genetic Apex: Charizard",
             totalCards: 0
         },
         {
             id: "AN001_0030_00_000",
-            logo: "/public/assets/pikachu.png",
+            logo: "https://static.mana.wiki/tcgwiki-pokemonpocket/pikachu-logo.png",
             name: "Genetic Apex: Pikachu",
             totalCards: 0
         },
         {
             id: "AP001_0010_00_000",
-            logo: "/public/assets/promo-a-1.png",
+            logo: "https://archives.bulbagarden.net/media/upload/c/c6/PA_Logo_Volume_1_EN.png",
             name: "Promo Pack A Series Vol. 1",
             totalCards: 0
         },
         {
             id: "AP001_0020_00_000",
-            logo: "/public/assets/promo-a.png",
+            logo: "https://archives.bulbagarden.net/media/upload/4/44/PA_Set_Logo_EN.png",
             name: "Promo Pack A Series Vol. 2",
             totalCards: 0
         }

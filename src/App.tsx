@@ -19,9 +19,9 @@ function App() {
 
   return (
     <>
-      <Grid container columns={12} spacing={0.5} style={{ marginBottom: '30px' }}>
+      <Grid container columns={12} spacing={0.5} >
         {packs.map((pack) => (
-          <Grid key={pack.id} size={4}>
+          <Grid display="flex" justifyContent="center" alignItems="center" key={pack.id} size="grow">
             <PackSummary cards={cards} pack={pack}></PackSummary>
           </Grid>
         ))}
