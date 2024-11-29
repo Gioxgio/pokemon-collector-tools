@@ -47,6 +47,8 @@ async function scrapeCards() {
         const cardJson = await cardResponse.json();
         const cardData = cardJson.data[0];
 
+        const imageUrl = cardData.externalId !== "PK_10_001400_00" ? cardData.displayImageUrl : "https://www.pokemon-zone.com/assets/uploads/2024/09/genetic-apex-a1-140-dugtrio.webp";
+
         const transformedCard = {
             id: cardData.externalId,
             name: cardData.name,
@@ -57,7 +59,7 @@ async function scrapeCards() {
                 id: cardData.rarity,
                 name: cardData.rarityName
             },
-            imgSrc: cardData.displayImageUrl,
+            imgSrc: imageUrl,
             expansion: {
                 id: cardData.expansionKey,
                 name: cardData.expansionName
