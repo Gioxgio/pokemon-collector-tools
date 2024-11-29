@@ -1,5 +1,5 @@
 const manifestForPlugIn = {
-    registerType: 'prompt',
+    registerType: 'autoUpdate',
     includeAssests: ['favicon.ico', "logo192.png", "logo512.svg"],
     manifest: {
         name: "pkmn-collect-tool",
