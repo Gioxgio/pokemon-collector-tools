@@ -1,5 +1,6 @@
 import cardsTemplate from "../../scraper/cards.json";
-import packsTemplate from "../../scraper/packs.json";
+import packs from "../../scraper/packs.json";
+import ratesTemplate from "../../scraper/rates.json";
 import { Card } from "../model/Card";
 
 export enum Stores {
@@ -39,6 +40,6 @@ const updateCardsData = () => {
 export const getFromLocalStorage = () => {
     updateCardsData();
     const cards = JSON.parse(localStorage.getItem(Stores.Cards) || "null") as Card[] || cardsTemplate as Card[];
-    const packs = packsTemplate;
-    return { cards, packs };
+    const rates = new Map<string, number>(Object.entries(ratesTemplate))
+    return { cards, packs, rates };
 }
