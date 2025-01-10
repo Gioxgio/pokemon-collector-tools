@@ -23,23 +23,17 @@ const updateCardsData = () => {
     if (cardsLocal === null) {
         initItem(Stores.Cards, cardsTemplate)
     } else {
-        (cardsTemplate as Card[]).forEach((cardT) => {
+        (cardsTemplate as Card[]).map((cardT) => {
             const cardL = cardsLocal.find((c) => c.id === cardT.id);
-            if (cardL === undefined) {
-                cardsLocal.push(cardT)
-            } else {
-                cardL.imgSrc = cardT.imgSrc;
-            }
+            cardT.owned = cardL?.owned || cardT.owned;
         });
-        const templateIds = cardsTemplate.map(c => c.id);
-        cardsLocal = cardsLocal.filter((cardsL) => templateIds.includes(cardsL.id))
-        initItem(Stores.Cards, cardsLocal)
+        initItem(Stores.Cards, cardsTemplate)
     }
 }
 
 export const getFromLocalStorage = () => {
     updateCardsData();
-    const cards = JSON.parse(localStorage.getItem(Stores.Cards) || "null") as Card[] || cardsTemplate as Card[];
+    const cards = getCards() || cardsTemplate as Card[];
     const rates = new Map<string, number>(Object.entries(ratesTemplate))
     return { cards, packs, rates };
 }
