@@ -13,7 +13,7 @@ const PackSummary = ({ cards, pack, rates }: PackSummary) => {
             if (card.owned) {
                 owned++;
             } else {
-                prob += rates.get(card.rarity.id) || 0
+                prob += rates.get(card.rarityId) || 0
             }
         }
     })
