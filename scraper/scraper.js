@@ -20,7 +20,7 @@ async function scrapeCards() {
         return {
             id: card.cardId,
             name: card.name,
-            rarityId: card.rarity,
+            rarityId: card.rarity === "SAR" ? "SR" : card.rarity,
             imgSrc: card.illustrationUrl,
             pokedexNumber: card.pokemon?.pokedexNumber,
             foundInPacks: [...new Set(card.foundInPacks)],
