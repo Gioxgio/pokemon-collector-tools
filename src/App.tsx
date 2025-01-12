@@ -16,14 +16,13 @@ function App() {
   const localStore = getFromLocalStorage();
   const [cards, setCards] = useState(localStore.cards.sort(sorter));
   const packs = localStore.packs;
-  const rates = localStore.rates;
 
   return (
     <>
       <Grid container columns={12} spacing={0.5} display="flex" justifyContent="center" alignItems="center" >
         {packs.map((pack) => (
           <Grid key={pack.id} size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
-            <PackSummary cards={cards} pack={pack} rates={rates}></PackSummary>
+            <PackSummary cards={cards} pack={pack}></PackSummary>
           </Grid>
         ))}
       </Grid>
