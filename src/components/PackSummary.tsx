@@ -8,7 +8,15 @@ const PackSummary = ({ cards, pack }: PackSummary) => {
 
     var owned = 0;
 
-    const packCards = cards.filter((c) => c.foundInPacks.includes(pack.id));
+    var packCards = [] as Card[];
+
+    cards.forEach((card) => {
+        if (card.foundInPacks.includes(pack.id)) {
+            packCards.push(card);
+            owned += card.owned ? 1 : 0;
+        }
+    });
+
     const prob = probabilityPerPack(packCards);
 
     const percentage = Math.round(owned / pack.totalCards * 100);
