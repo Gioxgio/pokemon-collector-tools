@@ -10,7 +10,7 @@ async function scrapeCards() {
         const totalCards = initialData.data.packCardIds.find((p) => p.packId == pack.packId).cardIds.length;
         return {
             id: pack.packId,
-            logo: pack.assetUrl,
+            logo: pack.sku.assetUrl,
             name: pack.description,
             totalCards: totalCards
         }
