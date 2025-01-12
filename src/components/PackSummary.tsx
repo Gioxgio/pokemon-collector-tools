@@ -18,7 +18,8 @@ const PackSummary = ({ cards, pack }: PackSummary) => {
             <img className={styles.img} alt={pack.name} src={pack.logo}></img>
             <div className={styles.container}>
                 <LinearProgress className={styles.linearProgress} style={{ height: '20px' }} variant="determinate" value={percentage} />
-                <p className={styles.percentage}>{`${percentage}% - ${prob}%`}</p>
+                {pack.id.startsWith("AP") && (<p className={styles.percentage}>{`${percentage}%`}</p>)}
+                {!pack.id.startsWith("AP") && (<p className={styles.percentage}>{`${percentage}% - ${prob}%`}</p>)}
             </div>
         </div>
     );
