@@ -5,5 +5,7 @@ export interface Card {
     imgSrc: string;
     pokedexNumber: string;
     foundInPacks: string[]
+    expansionId: string;
+    number: number;
     owned: boolean;
 }

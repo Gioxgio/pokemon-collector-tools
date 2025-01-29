@@ -19,17 +19,20 @@ async function scrapeCards() {
         })
         .sort((a, b) => a.id > b.id ? 1 : -1);
 
-    const mappedCards = initialData.data.cards.map((card) => {
-        return {
-            id: card.cardId,
-            name: card.name,
-            rarityId: card.rarity === "SAR" ? "SR" : card.rarity,
-            imgSrc: card.illustrationUrl,
-            pokedexNumber: card.pokemon?.pokedexNumber,
-            foundInPacks: [...new Set(card.foundInPacks)],
-            owned: false
-        };
-    });
+    const mappedCards = initialData.data.cards
+        .map((card) => {
+            return {
+                id: card.cardId,
+                name: card.name,
+                rarityId: card.rarity === "SAR" ? "SR" : card.rarity,
+                imgSrc: card.illustrationUrl,
+                pokedexNumber: card.pokemon?.pokedexNumber,
+                expansionId: card.expansion.expansionId,
+                number: card.collectionNumber,
+                foundInPacks: [...new Set(card.foundInPacks)],
+                owned: false
+            };
+        });
 
     const cardsFilename = `cards.json`;
     fs.writeFileSync(cardsFilename, JSON.stringify(mappedCards));
