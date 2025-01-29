@@ -6,15 +6,18 @@ async function scrapeCards() {
     const response = await fetch(BASE_URL);
     const initialData = await response.json();
 
-    const mappedPacks = initialData.data.packs.map((pack) => {
-        const totalCards = initialData.data.packCardIds.find((p) => p.packId == pack.packId).cardIds.length;
-        return {
-            id: pack.packId,
-            logo: pack.sku.assetUrl,
-            name: pack.description,
-            totalCards: totalCards
-        }
-    });
+    var mappedPacks = initialData.data.packs
+        .filter((pack) => !pack.packId.endsWith("01_000"))
+        .map((pack) => {
+            const totalCards = initialData.data.packCardIds.find((p) => p.packId == pack.packId).cardIds.length;
+            return {
+                id: pack.packId,
+                logo: pack.sku.assetUrl,
+                name: pack.description,
+                totalCards: totalCards
+            }
+        })
+        .sort((a, b) => a.id > b.id ? 1 : -1);
 
     const mappedCards = initialData.data.cards.map((card) => {
         return {
