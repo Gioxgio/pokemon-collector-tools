@@ -9,7 +9,9 @@ function App() {
 
   const sorter = (a: CardModel, b: CardModel) => {
     if (a.owned !== b.owned) { return a.owned ? 1 : -1; }
-    return a.id > b.id ? 1 : -1;
+    if (a.expansionId > b.expansionId) { return 1; }
+    if (a.expansionId < b.expansionId) { return -1; }
+    return (a.number > b.number) ? 1 : -1;
   };
   const handleChange = () => { cards.sort(sorter); setCards([...cards]); localStorage.setItem(Stores.Cards, JSON.stringify(cards)) };
 
