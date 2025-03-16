@@ -1,8 +1,6 @@
 import { Card } from "../model/Card";
 
-type InnerMap = {
-    [key: string]: Card[]
-};
+type CardsOrMap = Card[] | Map<string, CardsOrMap>;
 
 const isDiscarded = (card: Card) => {
     return card.owned || !card.foundInPacks;
@@ -40,18 +38,19 @@ const getMissingCards = (cards: Card[]): string => {
         .filter(card => !isDiscarded(card))
         .reduce((acc, c) => {
             const rarityList = acc[c.rarityId] || [];
-            const expansionList = rarityList[c.expansionId] || [];
+            const expansionList = rarityList[c.expansionId] as Card[] || [];
             expansionList.push(c);
             rarityList[c.expansionId] = expansionList;
             acc[c.rarityId] = rarityList;
             return acc;
-        }, {} as { [key: string]: { [key: string]: InnerMap } });
+        }, {} as { [key: string]: { [key: string]: CardsOrMap } });
 
     orderedRarities.forEach(r => {
         res = res.concat(rarityToSymbol(r) + "\n");
         const expansions = cardsByRarity[r];
         orderedExpansions.forEach(e => {
-            const cs = expansions[e].map(c => c.name).join(", ");
+            const expansion = expansions[e] as Card[];
+            const cs = expansion.map(c => c.name).join(", ");
             res = res.concat("  " + expansionToString(e) + "\n")
             res = res.concat("    " + cs + "\n");
         })
