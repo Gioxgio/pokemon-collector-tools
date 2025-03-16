@@ -4,6 +4,9 @@ import Card from './components/Card'
 import { useState } from 'react'
 import { getFromLocalStorage, Stores } from './services/localStorage';
 import PackSummary from './components/PackSummary';
+import getMissingCards from './services/MissingCardsHelper';
+import { Fab } from '@mui/material';
+import styles from "./styles/App.module.css";
 
 function App() {
 
@@ -13,11 +16,17 @@ function App() {
     if (a.expansionId < b.expansionId) { return -1; }
     return (a.number > b.number) ? 1 : -1;
   };
-  const handleChange = () => { cards.sort(sorter); setCards([...cards]); localStorage.setItem(Stores.Cards, JSON.stringify(cards)) };
 
   const localStore = getFromLocalStorage();
   const [cards, setCards] = useState(localStore.cards.sort(sorter));
   const packs = localStore.packs;
+
+  const handleChange = () => { cards.sort(sorter); setCards([...cards]); localStorage.setItem(Stores.Cards, JSON.stringify(cards)) };
+  const copyCards = async () => {
+    const mc = getMissingCards(cards);
+    await window.navigator.clipboard.writeText(mc);
+    alert("Missing cards copied to clipboard!");
+  }
 
   return (
     <>
@@ -36,8 +45,11 @@ function App() {
           </Grid>
         ))}
       </Grid>
+      <div className={styles.fixedButton}>
+        <Fab color="primary" onClick={copyCards}>📋</Fab>
+      </div>
     </>
-  )
+  );
 }
 
 export default App;
